@@ -15,14 +15,28 @@ import pandas as pd
 # =============================================================================
 # MAIN
 # =============================================================================
-#solve paraboloid in the first cuadrant
-A = np.array([[1, 1, 1], 
-              [1, -1, 1]])
-Q = 2 * np.eye(3)
-c = np.zeros((3,1))
-b = np.ones((2,1))
+# #solve paraboloid in the first cuadrant
+# A = np.array([[1, 1, 1], 
+#               [1, -1, 1]])
+# Q =  np.eye(3)
+# c = np.zeros((3,1))
+# b = np.ones((2,1))
 
-x, y, mu = PI.interior_points(Q, A, c, b, plot=True)
+# x, y, mu = PI.interior_points(Q, A, c, b, plot=True)
+
+
+# %%
+a = 1 * np.ones((2,1))
+d = 4 * np.ones((2,1))
+b = np.vstack((a, -d))
+
+Q = np.eye(2)
+c = np.array([[2], [3]])
+
+A = np.vstack((np.eye(2), - np.eye(2)))
+
+# x, y, mu = PI.interior_points(Q, A, c, b, plot=True)
+# %%
 
 # %% Pruebas para el descensop en 2 pasos
 df_ratings_raw = pd.read_csv('Data/ratings_small.csv')
@@ -45,22 +59,22 @@ tol = 1e-4
 W, H = d2p.gradient2steps(X_ratings, k, lambd, maxiter, tol)
 
 
-# %% hiperparams2
-# optimize
-np.random.seed(42)
-k = 20
-lambd = 1
-maxiter = 4
-tol = 1e-4
+# # %% hiperparams2
+# # optimize
+# np.random.seed(42)
+# k = 20
+# lambd = 1
+# maxiter = 4
+# tol = 1e-4
 
-# W, H = d2p.gradient2steps(X_ratings, k, lambd, maxiter, tol)
+# # W, H = d2p.gradient2steps(X_ratings, k, lambd, maxiter, tol)
 
-# %% hiperparams3
-# optimize
-np.random.seed(42)
-k = 20
-lambd = 0
-maxiter = 4
-tol = 1e-4
+# # %% hiperparams3
+# # optimize
+# np.random.seed(42)
+# k = 20
+# lambd = 0
+# maxiter = 4
+# tol = 1e-4
 
-# W, H = d2p.gradient2steps(X_ratings, k, lambd, maxiter, tol)
+# # W, H = d2p.gradient2steps(X_ratings, k, lambd, maxiter, tol)
